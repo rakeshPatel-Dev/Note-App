@@ -19,19 +19,19 @@
             title="Add New Reminder"
             class="w-12 h-12 bg-white rounded-full shadow-lg shadow-gray-300 flex items-center justify-center text-xl cursor-pointer hover:bg-gray-100"
           >
-            <i class="ri-add-large-line"></i>
+            <i class="ri-add-large-line font-semibold"></i>
           </button>
           <button
             title="Add New Reminder"
             class="w-12 h-12 bg-white rounded-full shadow-lg shadow-gray-300 flex items-center justify-center text-xl cursor-pointer hover:bg-gray-100"
           >
-            <i class="ri-arrow-up-line"></i>
+            <i class="ri-arrow-up-line font-semibold"></i>
           </button>
           <button
             title="Add New Reminder"
             class="w-12 h-12 bg-white rounded-full shadow-lg shadow-gray-300 flex items-center justify-center text-xl cursor-pointer hover:bg-gray-100"
           >
-            <i class="ri-arrow-down-line"></i>
+            <i class="ri-arrow-down-line font-semibold"></i>
           </button>
         </div>
         <!-- reminder card -->
@@ -54,10 +54,10 @@
                   <h3 class="text-md font-bold text-gray-500">Bookings</h3>
                 </div>
                 <div class="flex flex-col gap-1 text-right">
-                  <h3 class="text-md font-semibold text-gray-500">
+                  <h3 class="text-sm font-semibold text-gray-500">
                     Paroha Mun
                   </h3>
-                  <h3 class="text-md font-semibold text-gray-500">3 times</h3>
+                  <h3 class="text-sm font-semibold text-gray-500">3 times</h3>
                 </div>
               </div>
             </div>
@@ -74,8 +74,7 @@
                 title="Message"
                 class="cursor-pointer bg-white text-black font-semibold rounded-full px-4 py-2 flex items-center space-x-2 shadow-lg hover:bg-gray-200"
               >
-                <span class="mr-2"><i class="ri-message-3-fill"></i></span
-                >Message
+                <span class="mr-2"><i class="ri-message-line"></i></span>Message
               </button>
             </div>
           </div>
@@ -90,19 +89,167 @@
         </div>
         <!-- importance color -->
         <div class="flex flex-col space-y-6 justify-center items-center">
-          <div
-            class="bg-black h-6 w-6 rounded-full border-[1px] cursor-pointer shadow-lg shadow-gray-200 border-gray-500"
-          ></div>
-          <div
-            class="bg-amber-500 h-6 w-6 rounded-full cursor-pointer shadow-lg shadow-gray-200"
-          ></div>
-          <div
-            class="bg-amber-700 h-6 w-6 rounded-full cursor-pointer shadow-lg shadow-gray-200"
-          ></div>
-          <div
-            class="bg-red-800 h-6 w-6 rounded-full cursor-pointer shadow-lg shadow-gray-200"
-          ></div>
+          <!-- Low / Completed -->
+          <div class="relative group">
+            <div
+              class="bg-green-800 h-6 w-6 rounded-full border-[1px] cursor-pointer shadow- shadow-gray-200 border-gray-500"
+            ></div>
+            <span
+              class="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 hidden group-hover:block bg-gray-600 text-white text-xs font-semibold py-1 px-2 rounded-sm whitespace-nowrap"
+            >
+              Call Done
+            </span>
+          </div>
+
+          <!-- Medium -->
+          <div class="relative group">
+            <div
+              class="bg-amber-500 h-6 w-6 rounded-full cursor-pointer shadow-lg shadow-gray-200"
+            ></div>
+            <span
+              class="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 hidden group-hover:block bg-gray-600 text-white text-xs font-semibold py-1 px-2 rounded-sm whitespace-nowrap"
+            >
+              Call Later
+            </span>
+          </div>
+
+          <!-- High -->
+          <div class="relative group">
+            <div
+              class="bg-amber-700 h-6 w-6 rounded-full cursor-pointer shadow-lg shadow-gray-200"
+            ></div>
+            <span
+              class="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 hidden group-hover:block bg-gray-800 text-white text-xs font-semibold py-1 px-2 rounded-sm whitespace-nowrap"
+            >
+              Call Soon
+            </span>
+          </div>
+
+          <!-- Urgent -->
+          <div class="relative group">
+            <div
+              class="bg-red-800 h-6 w-6 rounded-full cursor-pointer shadow-lg shadow-gray-200"
+            ></div>
+            <span
+              class="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 hidden group-hover:block bg-gray-900 text-white text-xs font-semibold py-1 px-2 rounded-sm whitespace-nowrap"
+            >
+              Call Now
+            </span>
+          </div>
         </div>
+      </div>
+
+      <!-- form -->
+      <div
+        class="hidden h-[40rem] w-[30rem] bg-white shadow-lg shadow-gray-400 border-[1px] border-gray-300 text-gray-700 flex flex-col justify-center items-center px-6 rounded-2xl relative"
+      >
+        <h1 class="absolute top-4 left-6 text-xl font-bold text-black">
+          New Call
+        </h1>
+        <form
+          class="relative flex flex-col w-full items-start gap-3 ml-1 mt-2 text-sm"
+          action="submit"
+        >
+          <!-- Image input -->
+          <label for="imageUrl" class="font-semibold text-md">Image URL</label>
+          <input
+            class="px-4 py-2 border-2 border-gray-200 rounded-xl text-black w-full"
+            type="url"
+            name="Image url"
+            title="Image URL"
+            placeholder="https://example.com/image.jpg"
+          />
+          <!-- Name input -->
+          <label for="fullName" class="font-semibold text-md">Full Name</label>
+          <input
+            class="px-4 py-2 border-2 border-gray-200 rounded-xl text-black w-full"
+            type="text"
+            name="fullName"
+            id="fullName"
+            title="Full Name"
+            placeholder="Enter Full Name"
+          />
+          <!-- Home Town -->
+          <label for="hometown" class="font-semibold text-md">Home Town</label>
+          <input
+            class="px-4 py-2 border-2 border-gray-200 rounded-xl text-black w-full"
+            type="text"
+            name="Home Town"
+            id="hometown"
+            placeholder="Enter Home Town"
+          />
+          <!-- Purpose -->
+          <label for="purpose" class="font-semibold text-md">Purpose</label>
+          <input
+            class="px-4 py-2 border-2 border-gray-200 rounded-xl text-black w-full"
+            type="text"
+            name="Purpose"
+            id="purpose"
+            placeholder="e.g. Callback"
+          />
+          <!-- category -->
+          <div class="flex flex-row flex-wrap gap-1">
+            <label for="category" class="font-semibold text-md w-full"
+              >Category</label
+            >
+            <!-- no rush -->
+            <div
+              class="border-2 border-green-800 rounded-4xl px-4 py-2 hover:bg-green-100 font-semibold"
+            >
+              <input type="radio" name="category" id="noRush" />
+              <label for="noRush" class="text-green-800 ml-1">No Rush</label>
+            </div>
+
+            <!-- Important -->
+            <div
+              class="border-2 rounded-4xl px-4 py-2 border-amber-600 hover:bg-amber-100 font-semibold"
+            >
+              <input type="radio" name="category" id="important" />
+              <label for="important" class="text-amber-600 ml-1"
+                >Important</label
+              >
+            </div>
+
+            <!-- Emergency -->
+            <div
+              class="border-2 rounded-4xl px-4 py-2 border-orange-800 hover:bg-orange-100 font-semibold"
+            >
+              <input type="radio" name="category" id="emergency" />
+              <label for="emergency" class="text-orange-800 ml-1"
+                >Emergency</label
+              >
+            </div>
+
+            <!-- Urgent -->
+            <div
+              class="border-2 rounded-4xl px-4 py-2 font-semibold border-red-800 hover:bg-red-100"
+            >
+              <input type="radio" name="category" id="urgent" />
+              <label for="urgent" class="text-red-800 ml-1">Urgent</label>
+            </div>
+          </div>
+
+          <!--  btns -->
+          <div class="flex flex-col items-center justify-center gap-2 w-full">
+            <!-- create btn -->
+            <button
+              type="submit"
+              title="Create Note"
+              class="w-full bg-blue-600 text-gray-100 font-bold rounded-4xl py-2 hover:bg-blue-500 transition-hover ease-in duration-50"
+            >
+              <span><i class="ri-sticky-note-add-line mr-2"></i></span>Create
+              Note
+            </button>
+
+            <!-- close btn -->
+            <button
+              title="Close"
+              class="w-full bg-red-600 text-gray-100 font-bold rounded-4xl py-2 hover:bg-red-500 transition-hover ease-in duration-50"
+            >
+              <span><i class="ri-file-close-line mr-2"></i></span>Close
+            </button>
+          </div>
+        </form>
       </div>
     </main>
     <script src="app.js"></script>
