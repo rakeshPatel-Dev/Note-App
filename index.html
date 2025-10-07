@@ -12,7 +12,7 @@
   </head>
   <body>
     <main
-      class="relative flex min-h-screen items-center justify-center overflow-hidden"
+      class="relative flex min-h-screen items-center justify-center "
     >
       <div class="flex flex-row items-center justify-start">
         <!-- left buttons -->
@@ -41,6 +41,8 @@
         </div>
         <!-- reminder card -->
         <div class="relative mx-8">
+          <!-- stacked cards container -->
+
           <div
             class="h-72 w-80 flex flex-col bg-white rounded-2xl shadow-lg p-6 border-1 border-gray-200 relative top-0 left-0"
           >
@@ -223,43 +225,43 @@
               >
               <!-- no rush -->
               <div
-                class="border-2 border-green-800 rounded-4xl px-4 py-2 hover:bg-green-100 font-semibold"
+                class="border-2 border-green-800 rounded-4xl px-4 py-2 hover:bg-green-100 font-semibold cursor-pointer flex items-center gap-2" onclick="document.getElementById('noRush').checked = true"
               >
-                <input required type="radio" name="category" id="noRush" />
-                <label for="noRush" class="text-green-800 ml-1">No Rush</label>
+                <input class=" cursor-pointer" required type="radio" name="category" value="no rush" id="noRush" />
+                <label for="noRush" class="text-green-800 ml-1 cursor-pointer">No Rush</label>
               </div>
 
               <!-- Important -->
               <div
-                class="border-2 rounded-4xl px-4 py-2 border-amber-600 hover:bg-amber-100 font-semibold"
+                class="border-2 rounded-4xl px-4 py-2 border-amber-600 hover:bg-amber-100 font-semibold cursor-pointer flex items-center gap-2" onclick="document.getElementById('important').checked = true"
               >
-                <input required type="radio" name="category" id="important" />
-                <label for="important" class="text-amber-600 ml-1"
+                <input class=" cursor-pointer" required type="radio" name="category" value="important" id="important" />
+                <label for="important" class="text-amber-600 ml-1 cursor-pointer"
                   >Important</label
                 >
               </div>
 
               <!-- Emergency -->
               <div
-                class="border-2 rounded-4xl px-4 py-2 border-orange-800 hover:bg-orange-100 font-semibold"
+                class="border-2 rounded-4xl px-4 py-2 border-orange-800 hover:bg-orange-100 font-semibold cursor-pointer flex items-center gap-2" onclick="document.getElementById('emergency').checked = true"
               >
-                <input required type="radio" name="category" id="emergency" />
-                <label for="emergency" class="text-orange-800 ml-1"
+                <input class="cursor-pointer" required type="radio" name="category" value="emergency" id="emergency" />
+                <label for="emergency" class="text-orange-800 ml-1 cursor-pointer"
                   >Emergency</label
                 >
               </div>
 
-              <!-- Urgent -->
+             <!-- Urgent -->
               <div
-                class="border-2 rounded-4xl px-4 py-2 font-semibold border-red-800 hover:bg-red-100"
+                class="border-2 rounded-4xl px-4 py-2 font-semibold border-red-800 hover:bg-red-100 cursor-pointer flex items-center gap-2"
+                onclick="document.getElementById('urgent').checked = true"
               >
-                <input required type="radio" name="category" id="urgent" />
-                <label for="urgent" class="text-red-800 ml-1">Urgent</label>
+                <input required type="radio" name="category" value="urgent" id="urgent" class="cursor-pointer" />
+                <label for="urgent" class="text-red-800 cursor-pointer">Urgent</label>
               </div>
-            </div>
 
             <!--  btns -->
-            <div class="flex flex-col items-center justify-center gap-2 w-full">
+            <div class="flex flex-col items-center justify-center gap-2 w-full mt-2">
               <!-- create btn -->
               <button
                 type="submit"
@@ -282,8 +284,9 @@
           </form>
         </div>
       </div>
+    </main>
       <!-- message -->
-      <div class="hidden absolute -right-96 top-8" id="messageContainer">
+      <div class=" hidden fixed right-2 top-8 z-50" id="messageContainer">
         <div
           class="h-20 w-80 border-l-6 border-gray-800 px-4 rounded-md flex items-center justify-center shadow-lg shadow-gray-200"
           id="messageBox"
@@ -296,7 +299,6 @@
           ></span>
         </div>
       </div>
-    </main>
     <script src="app.js"></script>
   </body>
 </html>

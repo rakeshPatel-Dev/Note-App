@@ -1,109 +1,133 @@
-// Left btns
-const addBtn = document.getElementById('addBtn');
-const upBtn = document.getElementById('upBtn');
-const downBtn = document.getElementById('downBtn');
+// ===== 🎛 UI Elements =====
+const $ = (id) => document.getElementById(id);
 
-// app Data
-let  image = document.getElementById('image');
-let  fullName = document.getElementById('fullName');
-let  homeTown = document.getElementById('homeTown');
-let  booking = document.getElementById('bookingData');
+// Left side buttons
+const addBtn = $("addBtn");
+const upBtn = $("upBtn");
+const downBtn = $("downBtn");
 
-// app contact 
-const appCall = document.getElementById('appCall');
-const appMessage = document.getElementById('appMessage');
+// Card display elements
+const image = $("image");
+const fullName = $("fullName");
+const homeTown = $("homeTown");
+const booking = $("bookingData");
 
-// call importance
-const callDone = document.getElementById('callDone')
-const callLater = document.getElementById('callLater');
-const callSoon = document.getElementById('callSoon');
-const callNow = document.getElementById('callNow');
+// Contact action buttons
+const appCall = $("appCall");
+const appMessage = $("appMessage");
 
-// form
-const form = document.querySelector('form');
-const formContainer = document.getElementById('formContainer');
-// inputs
-const imageUrl = document.getElementById('imageUrl');
-const fullNameInput = document.getElementById('fullNameInput');
-const homeTownInput = document.getElementById('hometownInput');
-const purpose = document.getElementById('purpose')
+// Call importance filters
+const callDone = $("callDone");
+const callLater = $("callLater");
+const callSoon = $("callSoon");
+const callNow = $("callNow");
 
+// Form & Inputs
+const form = document.querySelector("form");
+const formContainer = $("formContainer");
+const imageUrl = $("imageUrl");
+const fullNameInput = $("fullNameInput");
+const homeTownInput = $("hometownInput");
+const purpose = $("purpose");
 
-// form btns 
-const createBtn = document.getElementById('createBtn');
-const closeBtn = document.getElementById('closeBtn');
+// Form buttons
+const createBtn = $("createBtn");
+const closeBtn = $("closeBtn");
 
-// message
-const messageContainer = document.getElementById('messageContainer');
-const messageBox = document.getElementById('messageBox');
-const message = document.getElementById('message');
-const messageBtn = document.getElementById('messageBtn');
+// Message popup
+const messageContainer = $("messageContainer");
+const messageBox = $("messageBox");
+const message = $("message");
+const messageBtn = $("messageBtn");
 
-// message handling
-function messagePopUp (msg,textColor ,bgColor) {
+// ===== 📞 Contact Handling =====
+function contactHandle() {
+  appCall.onclick = () =>
+    messagePopUp("Calling is not available RN.", "#2d3748", "#E5E7EB");
+
+  appMessage.onclick = () =>
+    messagePopUp("Messaging is not available RN.", "#000", "#fff");
+}
+contactHandle();
+
+// ===== 💬 Popup Message =====
+function messagePopUp(msg, textColor, bgColor) {
   message.textContent = msg;
-    messageContainer.style.display = 'block'
-    messageContainer.style.right ='2rem'  
-    message.style.color = textColor;
-    messageBox.style.backgroundColor = bgColor;
-    setTimeout(() => {
-        message.textContent = ""
-        messageContainer.style.display = 'none'
-        
-    }, 5000);
-    messageBtn.addEventListener('click', () => {
-        message.textContent = ""
-        messageContainer.style.display = 'none'
-    })
+  message.style.color = textColor;
+  messageBox.style.backgroundColor = bgColor;
+  messageContainer.classList.remove("hidden");
 
-    closeBtn.addEventListener('click', (dets) => {
-    dets.preventDefault();
-    formContainer.style.display = 'none';
-})
+  const hideMsg = () => {
+    message.textContent = "";
+    messageContainer.classList.add("hidden");
+  };
+
+  messageBtn.onclick = hideMsg;
+  setTimeout(hideMsg, 5000);
 }
 
-// contact hadling
-const contactHandle = () => {
-   appCall.addEventListener('click', () => {
-    messagePopUp("Calling is not Availabel RN." ,"#2d3748", "#E5E7EB");
-   })
+// ===== ❌ Form Close =====
+closeBtn.onclick = (e) => {
+  e.preventDefault();
+  formContainer.style.display = "none";
+};
 
-   appMessage.addEventListener('click', () => {
-       messagePopUp("Messaging is not available RN." ,"#000", "#fff");
-   })
+// ===== 🧠 Global Variables =====
+let imgUrl = "",
+  FName = "",
+  address = "",
+  reason = "",
+  selected = "";
+
+// ===== ✍️ Form Handling =====
+function updateCard() {
+  const category = document.querySelector('input[type="radio"]:checked');
+
+  if (
+    imageUrl.value.trim() &&
+    fullNameInput.value.trim() &&
+    homeTownInput.value.trim() &&
+    purpose.value.trim() &&
+    category
+  ) {
+    // Update UI
+    image.src = imageUrl.value;
+    fullName.textContent = fullNameInput.value;
+    homeTown.textContent = homeTownInput.value;
+    booking.textContent = purpose.value;
+
+    // Save values
+    imgUrl = imageUrl.value;
+    FName = fullNameInput.value;
+    address = homeTownInput.value;
+    reason = purpose.value;
+    selected = category.value;
+
+    // Hide form & reset
+    formContainer.style.display = "none";
+    form.reset();
+
+    messagePopUp("New Note Created Successfully!", "#016630", "#b9f8cf");
+  } else {
+    messagePopUp("Please fill and check all required fields.", "#C62828", "#EF9A9A");
+  }
 }
-contactHandle()
 
-// form handling
-const updateCard = () => {
-    if (fullNameInput.value.trim() !=="" && homeTownInput.value.trim !== "" && purpose.value.trim() !== "") {
-        image.removeAttribute('src' );
-        image.setAttribute('src',imageUrl.value);
-    
-        fullName.textContent = fullNameInput.value;
-        homeTown.textContent = homeTownInput.value;
-        booking.textContent = purpose.value;
+// ===== ➕ Add Button =====
+addBtn.onclick = () => (formContainer.style.display = "block");
 
-        formContainer.style.display = 'none';
-        form.reset();
-
-        messagePopUp("New Note Created Sucessfully!", "#016630", "#b9f8cf");
-
-    } else {
-       messagePopUp("Please Fill all required field.| No spaces Allowed." ,"#C62828" , "#EF9A9A")
-    }
+// ===== 💾 (Future Ready) Save to LocalStorage =====
+function saveToLocalStorage(obj) {
+  const oldTasks = JSON.parse(localStorage.getItem("tasks") || "[]");
+  oldTasks.push(obj);
+  localStorage.setItem("tasks", JSON.stringify(oldTasks));
 }
 
-addBtn.addEventListener('click', (dets) => {
-    formContainer.style.display = 'block';   
-})
+// ===== 📤 Form Submit =====
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  updateCard();
 
-// form submit
-form.addEventListener('submit', (dets) => { 
-    dets.preventDefault();
-      
-    updateCard()
-
-    
-})
-
+  saveToLocalStorage({ imgUrl, FName, address, reason, selected });
+  
+});
