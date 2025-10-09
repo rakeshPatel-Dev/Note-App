@@ -221,6 +221,9 @@ window.addEventListener("DOMContentLoaded", () => {
       createCard(task);
     });
     updateCardStackStyles();
+  } else {
+    // No cards in localStorage → show message
+    messagePopUp("No cards found! Click '+' to add your first card.", "#000", "#FFD54F");
   }
 });
 
