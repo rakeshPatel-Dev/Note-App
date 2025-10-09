@@ -1,0 +1,114 @@
+.stack {
+  height: 18rem;
+  width: 22rem;
+  padding: 1.5rem;
+  position: relative;
+}
+
+.card {
+  padding: 1rem;
+  border-radius: 1rem;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  -webkit-user-select: none;
+  user-select: none;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Card positioning is now handled dynamically by JavaScript */
+
+.leftDiv {
+  gap: 1rem;
+  margin-right: 1rem;
+}
+.rightDiv {
+  margin-left: 1rem;
+}
+.imageContainer {
+  padding: 0.25rem;
+  height: 5rem;
+  width: 5rem;
+}
+.imageContainer img {
+  height: 100%;
+  width: 100%;
+  object-position: center;
+  object-fit: cover;
+}
+.fullname {
+  margin-top: 0.5rem;
+}
+.detailsContainer {
+  display: flex;
+  flex-direction: row;
+  padding: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.info {
+  /* margin-top: 6px; */
+  color: #6a7282;
+}
+.answerContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 0.6rem;
+}
+.answer {
+  color: #6a7282;
+  /* margin-top: 6px; */
+}
+
+.button:first-child:hover {
+  background: #161616;
+}
+.button:first-child {
+  background: #000;
+  color: #fff;
+}
+.button:last-child:hover {
+  background: #d7d7d7;
+}
+.button:last-child {
+  background: #e5e7eb;
+}
+.button {
+  padding: 0.5rem 1.2rem;
+  border-radius: 2rem;
+  font-weight: 500;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+}
+/* span {
+  padding-right: 0.5rem;
+} */
+
+/* for message */
+
+@keyframes blinkAnim {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.blink {
+  animation: blinkAnim 0.4s ease-in-out;
+}
